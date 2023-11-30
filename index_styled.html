@@ -1,0 +1,100 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <link href="style.css" rel="stylesheet" />
+</head>
+<body> 
+    <script> function refresh() { console.log("refresh"); document.getElementById("stream").src = "http://129.70.68.8:8765/stream.mjpg#" + new Date().getTime(); setTimeout(refresh, 5000); } setTimeout(refresh, 5000); 
+    </script>
+
+    <div class="content" id="CameraStream">
+        <section>
+            <h1>Camera Stream</h1>
+            <img id="stream" src="http://129.70.68.8:8765/stream.mjpg" width="90%">
+        </section>
+            
+        <section id="Temperature">
+            <h1>Temperature (Sensor: ads1115)</h1> 
+            <img src="ads1115_1.png"> 
+            <img src="ads1115_2.png">
+        </section>     
+        
+        <section id="Pressure">
+            <h1>Pressure (Sensor: bme280)</h1> 
+            <img src="bme280_1.png"> 
+            <img src="bme280_2.png"> 
+        </section>     
+        
+        <section id="Volt">
+            <h1>Volt (Sensor: ds18b20)</h1> 
+            <img src="ds18b20_1.png"> 
+            <img src="ds18b20_2.png"> 
+        </section>     
+        
+        <section id="Ampere">
+            <h1>Ampere (Sensor: xgzp6847d)</h1> 
+            <img src="xgzp6847d_1.png"> 
+        </section>     
+        
+        <section id="Water">
+            <h1>Water Temperature (Sensor: mlx90614)</h1>
+            <img src="mlx90614_1.png"> 
+            <img src="mlx90614_2.png">
+        </section>     
+        
+        <section id="Infrared">
+            <h1>Infrared Temperature (Sensor: max31865)</h1> 
+            <img src="max31865_1.png">
+        </section>
+        
+        <section id="Flowmeter">
+            <h1>Flow Meter (Sensor: bronkhorst_propar)</h1> 
+            <img src="bronkhorst_propar_1.png"> 
+            <img src="bronkhorst_propar_2.png"> 
+            <img src="bronkhorst_propar_3.png"> 
+            <img src="bronkhorst_propar_4.png"> 
+            <img src="bronkhorst_propar_5.png"> 
+        </section>     
+    </div>
+    
+    <div class="sidebar">
+        <ul>
+            <a href="#CameraStream">
+                <p>Camera Stream</p>
+            </a>
+            <a href="#Temperature">
+                <p>Temperature</p>
+            </a>
+            <a href="#Pressure">
+                <p>Pressure</p>
+            </a>
+            <a href="#Volt">
+                <p>Volt</p>
+            </a>
+            <a href="#Ampere">
+                <p>Ampere</p>
+            </a>
+            <a href="#Water">
+                <p>Water Temperature</p>
+            </a>
+            <a href="#Infrared">
+                <p>Infrared Temperature</p>
+            </a>
+            <a href="#Flowmeter">
+                <p>Flowmeter</p>
+            </a>
+            <a href="#Impressum">
+                <p>Impressum</p>
+            </a>
+        </ul>
+    </div>
+
+    <div class="topbar">
+        <h1>BAPS</h1>
+    </div>
+
+    <div id="Impressum" class="footer">
+        <h1>Impressum</h1>
+    </div>
+</body>
+</html>
