@@ -22,7 +22,7 @@ time.sleep(0.01)
 # msb
 msb = 0
 try:        
-    msb = int(subprocess.check_output(["i2cget", "-y",  "1",  "0x6d",  "0x06"]), 16) << 16
+    msb = int(subprocess.check_output(["i2cget", "-y",  "1",  "0x6d",  "0x48"]), 16) << 16
     print(msb)
 except subprocess.CalledProcessError as e:
     print(e)
@@ -30,7 +30,7 @@ except subprocess.CalledProcessError as e:
 # csb   
 csb = 0
 try:
-    csb = int(subprocess.check_output(["i2cget", "-y",  "1",  "0x6d",  "0x07"]), 16) << 8
+    csb = int(subprocess.check_output(["i2cget", "-y",  "1",  "0x6d",  "0x5a"]), 16) << 8
     print(csb)
 except subprocess.CalledProcessError as e:
     print(e)
@@ -38,7 +38,7 @@ except subprocess.CalledProcessError as e:
 # lsb
 lsb = 0
 try:
-    lsb = int(subprocess.check_output(["i2cget", "-y",  "1",  "0x6d",  "0x08"]), 16)
+    lsb = int(subprocess.check_output(["i2cget", "-y",  "1",  "0x6d",  "0x76"]), 16)
     print(lsb)
 except subprocess.CalledProcessError as e:
     print(e)    
