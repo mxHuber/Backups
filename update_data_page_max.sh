@@ -12,7 +12,6 @@ while true; do
   # echo '<meta http-equiv="refresh" content="5">' >> $page
   echo '</head><body>' >> $page
 
-  echo '<img id="stream" src="http://129.70.68.8:8765/stream.mjpg" width="90%">' >> $page
   echo '<script>' >> $page 
   echo '  function refresh() {' >> $page
   echo '    console.log("refresh"); ' >> $page
@@ -22,13 +21,30 @@ while true; do
   echo '  setTimeout(refresh, 5000);' >> $page
   echo '</script>' >> $page
 
-  echo '<div class="content" id="CameraStream">' >> $page
+echo '<div class="sidenav">' >> $page
+echo '    <a href="#CameraStream">Camera Stream</a>' >> $page
+echo '    <hr>' >> $page
+echo '    <a href="#Temperature">Temperature</a>' >> $page
+echo '    <hr>' >> $page
+echo '    <a href="#Pressure">Pressure</a>' >> $page
+echo '    <hr>' >> $page
+echo '    <a href="#Volt">Volt</a>' >> $page
+echo '    <hr>' >> $page
+echo '    <a href="#Ampere">Ampere</a>' >> $page
+echo '    <hr>' >> $page
+echo '    <a href="#Water">Water Temperature</a>' >> $page
+echo '    <hr>' >> $page
+echo '    <a href="#Infrared">Infrared Temperature</a>' >> $page
+echo '    <hr>' >> $page
+echo '    <a href="#Flowmeter">Flowmeter</a>' >> $page
+echo '</div>' >> $page
+
+  echo '<div class="main" id="CameraStream">' >> $page
   echo '<section>' >> $page
   echo '<h1>Camera Stream</h1>' >> $page
   echo '<img id="stream" src="http://129.70.68.8:8765/stream.mjpg" width="90%">' >> $page
   echo '</section>' >> $page
-            
-            
+                      
   echo "set terminal png  size 600,400
 set xdata time
 set xtics rotate by -45
@@ -234,46 +250,6 @@ plot '< tail -n $N_data /home/pi/data-logger/data/bronkhorst_propar.txt' using 1
   echo '</pre>' >> $page
   echo '</details>' >> $page
   echo '</section>     ' >> $page
-  echo '</div>' >> $page
-    
-  echo '<div class="sidebar">' >> $page
-  echo '<ul>' >> $page
-  echo '    <a href="#CameraStream">' >> $page
-  echo '         <p>Camera Stream</p>' >> $page
-  echo '    </a>' >> $page
-  echo '    <a href="#Temperature">' >> $page
-  echo '        <p>Temperature</p>' >> $page
-  echo '    </a>' >> $page
-  echo '    <a href="#Pressure">' >> $page
-  echo '        <p>Pressure</p>' >> $page
-  echo '    </a>' >> $page
-  echo '    <a href="#Volt">' >> $page
-  echo '        <p>Volt</p>' >> $page
-  echo '    </a>' >> $page
-  echo '    <a href="#Ampere">' >> $page
-  echo '        <p>Ampere</p>' >> $page
-  echo '    </a>' >> $page
-  echo '    <a href="#Water">' >> $page
-  echo '        <p>Water Temperature</p>' >> $page
-  echo '    </a>' >> $page
-  echo '    <a href="#Infrared">' >> $page
-  echo '        <p>Infrared Temperature</p>' >> $page
-  echo '    </a>' >> $page
-  echo '    <a href="#Flowmeter">' >> $page
-  echo '        <p>Flowmeter</p>' >> $page
-  echo '    </a>' >> $page
-  echo '    <a href="#Impressum">' >> $page
-  echo '        <p>Impressum</p>' >> $page
-  echo '    </a>' >> $page
-  echo '</ul>' >> $page
-  echo '</div>' >> $page
-
-  echo '<div class="topbar">' >> $page
-  echo '<h1>BAPS</h1>' >> $page
-  echo '</div>' >> $page
-
-  echo '<div id="Impressum" class="footer">' >> $page
-  echo '    <h1>Impressum</h1>' >> $page
   echo '</div>' >> $page
 
   echo '</body></html>' >> $page
