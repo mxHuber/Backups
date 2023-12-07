@@ -51,6 +51,7 @@ set xtics rotate by -45
 set timefmt \"%s\"
 set format x \"%H:%M:%S\"
 set output '/home/pi/public_html/ads1115_1.png'
+set title \"ads1115 using 1:2\"
 plot '< tail -n $N_data /home/pi/data-logger/data/ads1115.txt' using 1:2" | gnuplot
 
   echo "set terminal png size 600,400
@@ -59,6 +60,7 @@ set xdata time
 set timefmt \"%s\"
 set format x \"%H:%M:%S\"
 set output '/home/pi/public_html/ads1115_2.png'
+set title \"ads1115 using 1:3\"
 plot '< tail -n $N_data /home/pi/data-logger/data/ads1115.txt' using 1:3" | gnuplot
             
   echo '<section id="Temperature">' >> $page
@@ -79,6 +81,7 @@ set xtics rotate by -45
 set timefmt \"%s\"
 set format x \"%H:%M:%S\"
 set output '/home/pi/public_html/bme280_1.png'
+set title \"bme280 using 1:2\"
 plot '< tail -n $N_data /home/pi/data-logger/data/bme280.txt' using 1:2" | gnuplot
 
   echo "set terminal png size 600,400
@@ -87,6 +90,7 @@ set xtics rotate by -45
 set timefmt \"%s\"
 set format x \"%H:%M:%S\"
 set output '/home/pi/public_html/bme280_2.png'
+set title \"bme280 using 1:3\"
 plot '< tail -n $N_data /home/pi/data-logger/data/bme280.txt' using 1:3" | gnuplot
         
   echo '<section id="Pressure">' >> $page
@@ -107,6 +111,7 @@ set xdata time
 set timefmt \"%s\"
 set format x \"%H:%M:%S\"
 set output '/home/pi/public_html/ds18b20_1.png'
+set title \"ds18b20 using 1:2\"
 plot '< tail -n $N_data /home/pi/data-logger/data/ds18b20.txt' using 1:2" | gnuplot
 
   echo "set terminal png size 600,400
@@ -115,6 +120,7 @@ set xdata time
 set timefmt \"%s\"
 set format x \"%H:%M:%S\"
 set output '/home/pi/public_html/ds18b20_2.png'
+set title \"ds18b20 using 1:3\"
 plot '< tail -n $N_data /home/pi/data-logger/data/ds18b20.txt' using 1:3" | gnuplot
 
   echo '<section id="Volt">' >> $page
@@ -135,6 +141,7 @@ set xdata time
 set timefmt \"%s\"
 set format x \"%H:%M:%S\"
 set output '/home/pi/public_html/xgzp6847d_1.png'
+set title \"xgzp6847 using 1:3\"
 plot '< tail -n $N_data /home/pi/data-logger/data/xgzp6847d.txt' using 1:2" | gnuplot
 
   echo '<section id="Ampere">' >> $page
@@ -154,6 +161,7 @@ set xdata time
 set timefmt \"%s\"
 set format x \"%H:%M:%S\"
 set output '/home/pi/public_html/mlx90614_1.png'
+set title \"mlx90614 using 1:2\"
 plot '< tail -n $N_data /home/pi/data-logger/data/mlx90614.txt' using 1:2" | gnuplot
 
   echo "set terminal png size 600,400
@@ -162,6 +170,7 @@ set xdata time
 set timefmt \"%s\"
 set format x \"%H:%M:%S\"
 set output '/home/pi/public_html/mlx90614_2.png'
+set title \"mlx90614 using 1:3\"
 plot '< tail -n $N_data /home/pi/data-logger/data/mlx90614.txt' using 1:3" | gnuplot
         
   echo '<section id="Water">' >> $page
@@ -182,6 +191,7 @@ set xdata time
 set timefmt \"%s\"
 set format x \"%H:%M:%S\"
 set output '/home/pi/public_html/max31865_1.png'
+set title \"max31865 using 1:2\"
 plot '< tail -n $N_data /home/pi/data-logger/data/max31865.txt' using 1:2" | gnuplot
        
   echo ' <section id="Infrared">' >> $page
@@ -201,6 +211,7 @@ set xdata time
 set timefmt \"%s\"
 set format x \"%H:%M:%S\"
 set output '/home/pi/public_html/bronkhorst_propar_1.png'
+set title \"bronkhorst_propar using 1:2\"
 plot '< tail -n $N_data /home/pi/data-logger/data/bronkhorst_propar.txt' using 1:2" | gnuplot
 
   echo "set terminal png size 600,400
@@ -209,6 +220,7 @@ set xdata time
 set timefmt \"%s\"
 set format x \"%H:%M:%S\"
 set output '/home/pi/public_html/bronkhorst_propar_2.png'
+set title \"bronkhorst_propar using 1:3\"
 plot '< tail -n $N_data /home/pi/data-logger/data/bronkhorst_propar.txt' using 1:3" | gnuplot
 
   echo "set terminal png size 600,400
@@ -217,6 +229,7 @@ set xdata time
 set timefmt \"%s\"
 set format x \"%H:%M:%S\"
 set output '/home/pi/public_html/bronkhorst_propar_3.png'
+set title \"bronkhorst_propar using 1:4\"
 plot '< tail -n $N_data /home/pi/data-logger/data/bronkhorst_propar.txt' using 1:4" | gnuplot
 
   echo "set terminal png size 600,400
@@ -225,6 +238,7 @@ set xdata time
 set timefmt \"%s\"
 set format x \"%H:%M:%S\"
 set output '/home/pi/public_html/bronkhorst_propar_4.png'
+set title \"bronkhorst_propar using 1:5\"
 plot '< tail -n $N_data /home/pi/data-logger/data/bronkhorst_propar.txt' using 1:5" | gnuplot
 
   echo "set terminal png size 600,400
@@ -233,6 +247,7 @@ set xdata time
 set timefmt \"%s\"
 set format x \"%H:%M:%S\"
 set output '/home/pi/public_html/bronkhorst_propar_5.png'
+set title \"bronkhorst_propar using 1:6\"
 plot '< tail -n $N_data /home/pi/data-logger/data/bronkhorst_propar.txt' using 1:6" | gnuplot
 
         
