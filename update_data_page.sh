@@ -76,6 +76,29 @@ plot '< tail -n $N_data /home/pi/data-logger/data/ads1115.txt' using 1:3" | gnup
   echo '<img src="ads1115_1.png">' >> $page
   echo '<img src="ads1115_2.png">' >> $page
   echo '<br><details>' >> $page
+
+  adsprint=1
+
+  if ! [ -s /home/pi/data-logger/data/ads1115.txt ]; then
+    echo '  <h1 style="color: red">No Data</h1>' >> $page
+    adsprint=0
+  fi
+
+  if grep -q "Error: Write Failed" "/home/pi/data-logger/data/ads1115.txt"; then
+    echo '  <h1 style="color: red"> No Signal (Error: Write Failed)</h1>' >> $page
+    adsprint=0
+  fi
+
+  if grep -q "None" "/home/pi/data-logger/data/ads1115.txt"; then
+    echo '  <h1 style="color: red"> Data file contains non number entries called None</h1>' >> $page
+    adsprint=0
+  fi
+
+  if [ $adsprint -eq 1 ]; then
+    echo '    <img src="ads1115_1.png">' >> $page 
+    echo '    <img src="ads1115_2.png">' >> $page 
+  fi
+
   echo '<summary>raw data</summary>' >> $page
   echo '<pre>' >> $page
   tail -n $N_data /home/pi/data-logger/data/ads1115.txt >> $page
@@ -108,9 +131,32 @@ set title \"bme280 using 1:3\"
 plot '< tail -n $N_data /home/pi/data-logger/data/bme280.txt' using 1:3" | gnuplot
         
   echo '<section id="Pressure">' >> $page
-  echo '          <h1>Pressure (Sensor: bme280)</h1> ' >> $page
-  echo '          <img src="bme280_1.png"> ' >> $page
-  echo '    <img src="bme280_2.png"> ' >> $page
+  echo '    <h1>Pressure (Sensor: bme280)</h1> ' >> $page
+  echo '    <img src="bme280_1.png"> ' >> $page
+  echo '    <img src="bme280_2.png"> ' >> $page 
+  
+  bmeprint=1
+
+  if ! [ -s /home/pi/data-logger/data/bme280.txt ]; then
+    echo '  <h1 style="color: red">No Data</h1>' >> $page
+    bmeprint=0
+  fi
+
+  if grep -q "Error: Write Failed" "/home/pi/data-logger/data/bme280.txt"; then
+    echo '  <h1 style="color: red"> No Signal (Error: Write Failed)</h1>' >> $page
+    bmeprint=0
+  fi
+
+  if grep -q "None" "/home/pi/data-logger/data/bme280.txt"; then
+    echo '  <h1 style="color: red"> Data file contains non number entries called None</h1>' >> $page
+    bmeprint=0
+  fi
+
+  if [ $bmeprint -eq 1 ]; then
+    echo '    <img src="bme280_1.png">' >> $page 
+    echo '    <img src="bme280_2.png">' >> $page 
+  fi
+
   echo '<br><details>' >> $page
   echo '<summary>raw data</summary>' >> $page
   echo '<pre>' >> $page
@@ -145,8 +191,29 @@ plot '< tail -n $N_data /home/pi/data-logger/data/ds18b20.txt' using 1:3" | gnup
 
   echo '<section id="Volt">' >> $page
   echo '    <h1>Volt (Sensor: ds18b20)</h1>' >> $page 
-  echo '    <img src="ds18b20_1.png">' >> $page 
-  echo '    <img src="ds18b20_2.png">' >> $page 
+  
+  dsprint=1
+
+  if ! [ -s /home/pi/data-logger/data/ds18b20.txt ]; then
+    echo '  <h1 style="color: red">No Data</h1>' >> $page
+    dsprint=0
+  fi
+
+  if grep -q "Error: Write Failed" "/home/pi/data-logger/data/ds18b20.txt"; then
+    echo '  <h1 style="color: red"> No Signal (Error: Write Failed)</h1>' >> $page
+    dsprint=0
+  fi
+
+  if grep -q "None" "/home/pi/data-logger/data/ds18b20.txt"; then
+    echo '  <h1 style="color: red"> Data file contains non number entries called None</h1>' >> $page
+    dsprint=0
+  fi
+
+  if [ $dsprint -eq 1 ]; then
+    echo '    <img src="ds18b20_1.png">' >> $page 
+    echo '    <img src="ds18b20_2.png">' >> $page 
+  fi
+  
   echo '<br><details>' >> $page
   echo '<summary>raw data</summary>' >> $page
   echo '<pre>' >> $page
@@ -170,12 +237,25 @@ plot '< tail -n $N_data /home/pi/data-logger/data/xgzp6847d.txt' using 1:2" | gn
   echo '<section id="Ampere">' >> $page
   echo '    <h1>Ampere (Sensor: xgzp6847d)</h1> ' >> $page
 
-  if grep -q Error "/home/pi/data-logger/data/xgzp6847d.txt"; then
-    echo '<h1 style="color: red">No Signal</h1>' >> $page
+  xgzpprint=1
+
+  if ! [ -s /home/pi/data-logger/data/xgzp6847d.txt ]; then
+    echo '  <h1 style="color: red">No Data</h1>' >> $page
+    xgzpprint=0
   fi
-  
-  if ! grep -q Error "/home/pi/data-logger/data/xgzp6847d.txt"; then
-    echo '    <img src="xgzp6847d_1.png"> ' >> $page
+
+  if grep -q "Error: Write Failed" "/home/pi/data-logger/data/xgzp6847d.txt"; then
+    echo '  <h1 style="color: red"> No Signal (Error: Write Failed)</h1>' >> $page
+    xgzpprint=0
+  fi
+
+  if grep -q "None" "/home/pi/data-logger/data/xgzp6847d.txt"; then
+    echo '  <h1 style="color: red"> Data file contains non number entries called None</h1>' >> $page
+    xgzpprint=0
+  fi
+
+  if [ $xgzpprint -eq 1 ]; then
+    echo '    <img src=xgzp6847d_1.png">' >> $page
   fi
 
   echo '<details>' >> $page
@@ -215,22 +295,27 @@ plot '< tail -n $N_data /home/pi/data-logger/data/mlx90614.txt' using 1:3" | gnu
   echo '    <img src="mlx90614_1.png"> ' >> $page
   echo '    <img src="mlx90614_2.png">' >> $page
 
-  if [ -s /home/pi/data-logger/data/mlx90614.txt ]; then
-    echo '    <img src="mlx90614_1.png">' >> $page
-    echo '    <img src="mlx90614_2.png">' >> $page 
-  fi
+  mlxprint=1
 
   if ! [ -s /home/pi/data-logger/data/mlx90614.txt ]; then
     echo '  <h1 style="color: red">No Data</h1>' >> $page
+    mlxprint=0
   fi
 
   if grep -q "Error: Write Failed" "/home/pi/data-logger/data/mlx90614.txt"; then
     echo '  <h1 style="color: red"> No Signal (Error: Write Failed)</h1>' >> $page
+    mlxprint=0
   fi
 
   if grep -q "None" "/home/pi/data-logger/data/mlx90614.txt"; then
     echo '  <h1 style="color: red"> Data file contains non number entries called None</h1>' >> $page
-  fi  
+    mlxprint=0
+  fi
+
+  if [ $mlxprint -eq 1 ] then
+    echo '    <img src="mlx90614_1.png">' >> $page
+    echo '    <img src="mlx90614_2.png">' >> $page 
+  fi
 
   echo '<br><details>' >> $page
   echo '<summary>raw data</summary>' >> $page
@@ -255,22 +340,27 @@ plot '< tail -n $N_data /home/pi/data-logger/data/max31865.txt' using 1:2" | gnu
   echo ' <section id="Infrared">' >> $page
   echo '    <h1>Infrared Temperature (Sensor: max31865)</h1> ' >> $page
   echo '    <img src="max31865_1.png">' >> $page
-  
-  if [ -s /home/pi/data-logger/data/max31865.txt ]; then
-    echo '    <img src="max31865_1.png"> ' >> $page
-  fi
+ 
+  maxprint=1
 
   if ! [ -s /home/pi/data-logger/data/max31865.txt ]; then
     echo '  <h1 style="color: red">No Data</h1>' >> $page
+    maxprint=0
   fi
 
   if grep -q "Error: Write Failed" "/home/pi/data-logger/data/max31865.txt"; then
     echo '  <h1 style="color: red"> No Signal (Error: Write Failed)</h1>' >> $page
+    maxprint=0
   fi
 
   if grep -q "None" "/home/pi/data-logger/data/max31865.txt"; then
     echo '  <h1 style="color: red"> Data file contains non number entries called None</h1>' >> $page
-  fi  
+    maxprint=0
+  fi
+
+  if [ $maxprint -eq 1 ]; then
+    echo '    <img src="max31865_1.png">' >> $page
+    echo '    <img src="max31865_2.png">' >> $page 
 
   echo '<br><details>' >> $page
   echo '<summary>raw data</summary>' >> $page
@@ -333,26 +423,31 @@ plot '< tail -n $N_data /home/pi/data-logger/data/bronkhorst_propar.txt' using 1
         
   echo '<section id="Flowmeter">' >> $page
   echo '    <h1>Flow Meter (Sensor: bronkhorst_propar)</h1> ' >> $page
-  
-  if [ -s /home/pi/data-logger/data/bronkhorst_propar.txt ]; then
+ 
+  bronkprint=1
+
+  if ! [ -s /home/pi/data-logger/data/bronkhorst_propar.txt ]; then
+    echo '  <h1 style="color: red">No Data</h1>' >> $page
+    bronkprint=0
+  fi
+
+  if grep -q "Error: Write Failed" "/home/pi/data-logger/data/bronkhorst_propar.txt"; then
+    echo '  <h1 style="color: red"> No Signal (Error: Write Failed)</h1>' >> $page
+    bronkprint=0
+  fi
+
+  if grep -q "None" "/home/pi/data-logger/data/bronkhorst_propar.txt"; then
+    echo '  <h1 style="color: red"> Data file contains non number entries called None</h1>' >> $page
+    bronkprint=0
+  fi
+
+  if [ $bronkprint -eq 1 ]; then
     echo '    <img src="bronkhorst_propar_1.png"> ' >> $page
     echo '    <img src="bronkhorst_propar_2.png"> ' >> $page
     echo '    <img src="bronkhorst_propar_3.png"> ' >> $page
     echo '    <img src="bronkhorst_propar_4.png"> ' >> $page
     echo '    <img src="bronkhorst_propar_5.png"> ' >> $page
   fi
-
-  if ! [ -s /home/pi/data-logger/data/bronkhorst_propar.txt ]; then
-    echo '  <h1 style="color: red">No Data</h1>' >> $page
-  fi
-
-  if grep -q "Error: Write Failed" "/home/pi/data-logger/data/bronkhorst_propar.txt"; then
-    echo '  <h1 style="color: red"> No Signal</h1>' >> $page
-  fi
-
-  if grep -q "None" "/home/pi/data-logger/data/bronkhorst_propar.txt"; then
-    echo '  <h1 style="color: red"> Data file contains non number entries called None</h1>' >> $page
-  fi  
 
   echo '<br><details>' >> $page
   echo '<summary>raw data</summary>' >> $page
